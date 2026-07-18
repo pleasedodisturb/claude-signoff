@@ -1,0 +1,3 @@
+# signoff writes session artifacts here; keep the repo's own dogfooded runs out of git
+docs/sessions/
+.DS_Store

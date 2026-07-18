@@ -1,0 +1,19 @@
+{
+  "name": "signoff",
+  "description": "End-of-session sign-off for Claude Code: commit work, prune worktrees, sync your issue tracker, and commit a cold-start handoff so the next session resumes anywhere. Local-only, just git.",
+  "version": "0.1.0",
+  "author": { "name": "Vitalik Garan" },
+  "homepage": "https://github.com/pleasedodisturb/claude-signoff",
+  "repository": "https://github.com/pleasedodisturb/claude-signoff",
+  "license": "MIT",
+  "keywords": [
+    "session",
+    "handoff",
+    "wrap-up",
+    "memory",
+    "context",
+    "worktree",
+    "git",
+    "workflow"
+  ]
+}

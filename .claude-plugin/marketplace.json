@@ -1,0 +1,16 @@
+{
+  "name": "signoff",
+  "owner": { "name": "Vitalik Garan" },
+  "description": "Session sign-off skill for Claude Code.",
+  "plugins": [
+    {
+      "name": "signoff",
+      "source": ".",
+      "description": "End-of-session sign-off: commit, prune worktrees, sync tracker, and commit a cold-start handoff so the next session resumes anywhere.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["session", "handoff", "wrap-up", "workflow", "git"]
+    }
+  ]
+}
