@@ -13,10 +13,11 @@ already have.
 /signoff
 ```
 
-<!-- TODO before publishing: record an asciinema/GIF of a real run and drop it at
-     docs/demo.gif, then uncomment the line below. A broken image tag hurts more
-     than no image, so it stays commented until the asset exists. -->
-<!-- ![demo](docs/demo.gif) -->
+![signoff --dry-run on a sample repo](docs/demo.gif)
+
+<sub>A real `/signoff --dry-run` on a throwaway repo — it flags the commit-on-`main`,
+skips the (absent) tracker, catches a broken test import, and drafts the handoff,
+all without writing a thing. ([replay it](docs/demo/signoff-demo.tape))</sub>
 
 ## Why another session tool?
 
