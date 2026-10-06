@@ -1,0 +1,39 @@
+/* Shared terminal styling for the signoff README illustrations.
+   System fonts only, no network. Backgrounds are explicit on html/body
+   so headless Chrome screenshots never fall back to white. */
+:root{
+  --bg:#0d0d0d; --win:#191919; --bar:#232323; --border:#2c2c2c;
+  --text:#d6d6d6; --muted:#8d8d8d; --dim:#6a727d; --white:#f2f2f2;
+  --c1:#5aa1e3; /* commit            */
+  --c2:#aa8ed6; /* worktree prune    */
+  --c3:#e6c14e; /* tracker sync      */
+  --c4:#84c060; /* loose ends        */
+  --c5:#ef9a3d; /* session summary   */
+  --c6:#3fd0c4; /* cold-start handoff, the primary */
+  --ok:#84c060; --warn:#e6c14e; --bad:#e0556b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{padding:28px 30px}
+.title{color:var(--white);font-size:22px;font-weight:650;margin:0 2px 4px;letter-spacing:-.2px}
+.subtitle{color:var(--muted);font-size:14px;margin:0 2px 18px}
+.term{background:var(--win);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.termbar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--bar);color:var(--muted);font-size:12.5px}
+.dot{width:11px;height:11px;border-radius:50%}
+.r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+.termbar .t{margin-left:9px}
+.body{padding:18px 22px 20px;font-family:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  font-size:14px;line-height:1.66;color:var(--text)}
+.row{display:flex;align-items:flex-start;gap:10px;padding:1.5px 0}
+.badge{flex:none;width:19px;height:19px;border-radius:50%;color:#0d0d0d;font-weight:700;font-size:11.5px;
+  display:flex;align-items:center;justify-content:center;margin-top:3px;font-family:-apple-system,sans-serif}
+.sp{width:19px;flex:none}
+.line{white-space:pre-wrap;word-break:break-word;flex:1;min-width:0}
+.muted{color:var(--muted)}.dim{color:var(--dim)}.white{color:var(--white)}
+.user{color:var(--white)}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.tag{font-size:11px;color:var(--dim);font-family:-apple-system,sans-serif;
+  border:1px solid var(--border);border-radius:4px;padding:0 6px;margin-left:7px;vertical-align:1.5px}
+.t1{color:var(--c1)}.t2{color:var(--c2)}.t3{color:var(--c3)}.t4{color:var(--c4)}.t5{color:var(--c5)}.t6{color:var(--c6)}
+.sep{border:none;border-top:1px dashed #333;margin:10px 0 6px}
