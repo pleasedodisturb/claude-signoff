@@ -13,6 +13,11 @@ already have.
 /signoff
 ```
 
+![Illustration of a /signoff run on a sample repo called acme-api: six phase lines followed by the Session Sign-Off Complete report listing commits, worktrees, tracker updates, loose ends, the session summary path and the refreshed HANDOFF.md](docs/screenshots/hero.png)
+
+<sub>Generated illustration of the real report format (sample repo and issue numbers are made up).
+Source: [docs/screenshots/src](docs/screenshots/src). The recording below is an actual run.</sub>
+
 ![signoff --dry-run on a sample repo](docs/demo.gif)
 
 <sub>A real `/signoff --dry-run` on a throwaway repo — it flags the commit-on-`main`,
@@ -26,6 +31,12 @@ an opaque local DB — a fresh `git clone` (a teammate, a cloud/container run, y
 second laptop) never sees them. `signoff` **commits** the handoff, so continuity
 travels with the repo. The handoff is a human-readable prompt you can also just
 read yourself.
+
+![Annotated illustration of one /signoff run with numbered badges: 1 commit and push, 2 worktree cleanup showing the four safety gates (work complete, merged, clean, pushed) with one worktree removed and one kept, 3 GitHub Issues sync, 4 loose-ends audit, 5 session summary, and 6 a highlighted cold-start HANDOFF.md with its six sections](docs/screenshots/phases-overview.png)
+
+<sub>Generated illustration of one sign-off on a sample private repo, numbered by phase as in
+[SKILL.md](SKILL.md). Phase 6 is the cold-start handoff. On a public repo, or when visibility
+can't be confirmed, the summary and handoff are written locally and gitignored instead of pushed.</sub>
 
 - **Portable** — the handoff is a committed file, so any cold session on any
   machine can resume from it.

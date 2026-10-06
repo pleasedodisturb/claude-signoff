@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  Source for docs/screenshots/phases-overview.png. Render with ./render.sh.
+  Annotated walk through one /signoff run on a synthetic repo (acme-api).
+  Badge numbers match SKILL.md phase numbers 1 to 6. Phase 6 (the
+  cold-start handoff) is the differentiator, so it gets the large card.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="term.css">
+<style>
+  .wrap{width:1300px}
+  .phase{color:var(--white);font-weight:600}
+  .gates{display:grid;grid-template-columns:auto auto auto auto;gap:2px 22px;margin:2px 0 2px}
+  .handoff{margin-top:14px;border:1.5px solid var(--c6);border-radius:10px;
+    background:linear-gradient(180deg,rgba(63,208,196,.10),rgba(63,208,196,.03));
+    box-shadow:0 0 0 4px rgba(63,208,196,.07);padding:14px 18px 14px}
+  .handoff .head{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+  .handoff .badge{width:24px;height:24px;font-size:13.5px;margin-top:0}
+  .handoff .h{color:var(--c6);font-weight:700;font-size:15.5px}
+  .handoff .why{font-family:-apple-system,sans-serif;color:var(--muted);font-size:13px;margin:0 0 4px 34px}
+  .doc{background:#121212;border:1px solid var(--border);border-radius:7px;padding:10px 14px;margin-top:6px}
+  .doc .fn{color:var(--dim);font-size:12px;margin-bottom:2px}
+  .md{color:var(--c6)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="term">
+    <div class="termbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="t">claude · ~/src/acme-api · feat/rate-limit</span></div>
+    <div class="body">
+      <div class="row"><span class="sp"></span><span class="line user">&gt; /signoff</span></div>
+      <div class="row"><span class="sp"></span><span class="line dim">Options: tracker=github-issues · push=on · summary-dir=docs/sessions/ · mode=normal · repo private</span></div>
+
+      <div class="row"><span class="badge" style="background:var(--c1)">1</span><span class="line"><span class="phase">Commit outstanding work</span>  <span class="dim">git status: 2 files changed (src/middleware/rateLimit.ts, test/rateLimit.test.ts)</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t1">committed</span> "Add token-bucket rate limiter (#42)" <span class="dim">· never stages .env or build output</span> <span class="t1">→ pushed</span> feat/rate-limit</span></div>
+
+      <div class="row"><span class="badge" style="background:var(--c2)">2</span><span class="line"><span class="phase">Worktree cleanup</span>  <span class="dim">only worktrees from this session; removed only if all four gates pass</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t2">../acme-api-fix-retry</span>   <span class="ok">✓ work complete  ✓ merged into main  ✓ clean  ✓ pushed</span>   <span class="t2">→ removed</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t2">../acme-api-rate-limit</span>  <span class="warn">✗ work complete  ✗ merged</span><span class="ok">  ✓ clean  ✓ pushed</span>         <span class="t2">→ kept</span> <span class="dim">(PR #43 open)</span></span></div>
+
+      <div class="row"><span class="badge" style="background:var(--c3)">3</span><span class="line"><span class="phase">Issue-tracker sync</span>  <span class="dim">tracker=github-issues, via gh</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t3">#42</span> commented: limiter in PR #43, awaiting review    <span class="t3">#39</span> closed with resolution comment: fixed by PR #40    <span class="t3">#44</span> created</span></div>
+
+      <div class="row"><span class="badge" style="background:var(--c4)">4</span><span class="line"><span class="phase">Loose-ends audit</span>  <span class="dim">discussed but not done, decided but not acted on, untracked TODOs</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t4">create issue</span>   Retry-After header is sent but not documented <span class="dim">→ #44</span></span></div>
+      <div class="row"><span class="sp"></span><span class="line"><span class="t4">note in handoff</span> 429 body shape agreed as {"error":"rate_limited","retry_after":N}</span></div>
+
+      <div class="row"><span class="badge" style="background:var(--c5)">5</span><span class="line"><span class="phase">Session summary</span>  <span class="t5">docs/sessions/2026-10-06_rate-limit.md</span> <span class="dim">· private repo → branch docs/session-summary-2026-10-06, PR #45 (not auto-merged)</span></span></div>
+
+      <div class="handoff">
+        <div class="head"><span class="badge" style="background:var(--c6)">6</span><span class="h">Cold-start handoff: docs/sessions/HANDOFF.md refreshed</span></div>
+        <div class="why">The part nothing else does: a self-contained prompt a cold session (fresh terminal, teammate's clone, cloud run that sees only a git clone) pastes as its first message and resumes with full intent.</div>
+        <div class="doc">
+          <div class="fn">docs/sessions/HANDOFF.md · bundled into PR #45</div>
+<div class="line"><span class="md">## Status</span>             Refreshed 2026-10-06. Rate limiter is up for review in PR #43; #39 closed, #44 filed.
+<span class="md">## Mission</span>            Get PR #43 reviewed and merged, then document Retry-After (#44).
+<span class="md">## Gotchas</span>            Limiter tests use a fake clock; real timers make them flaky. 429 body is {"error","retry_after"}.
+<span class="md">## Next up, in order</span>  1. Address review on PR #43 (npm test)   2. Document Retry-After in docs/api.md (#44)
+<span class="md">## Working agreements</span> Branch per issue, tests required, review before merge.
+<span class="md">## Context links</span>      docs/sessions/2026-10-06_rate-limit.md · src/middleware/rateLimit.ts</div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="row"><span class="sp"></span><span class="line dim">Public repo, or visibility unknown? Phases 5 and 6 still write both files, but locally: docs/sessions/ is gitignored, no PR.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
